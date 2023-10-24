@@ -1,0 +1,101 @@
+{
+  "rooms": [
+    {
+      "selector": "#alice",
+      "entityId": "09b274d0-0aa7-42a0-a325-d038ce181cea",
+      "feeds": {
+        "temperature": "88cb41ba-2928-428c-8b8c-da47c670ab7a",
+        "co2": "81011aeb-5db5-41a8-bd82-0c8feac3369d",
+        "occupancy": "3db79f78-d8ce-4a57-9090-b2736ad12436",
+        "humidity": "1a87be40-ef0a-416b-9adb-1e227b95a653"
+      }
+    },
+    {
+      "selector": "#eve",
+      "entityId": "69a38a87-a284-4290-a38f-49b5b49da0ec",
+      "feeds": {
+        "temperature": "d2bdca60-9991-4e2e-a6f6-8e8da4eb7b68",
+        "co2": "873cdc9b-715c-434e-96d5-10abacbc7749",
+        "occupancy": "b1ce7727-d930-484c-bc11-d703c40aba2a",
+        "humidity": "c2d3cb68-91e7-4e39-8356-32a9fdf2fd69"
+      }
+    },
+    {
+      "selector": "#bob",
+      "entityId": "17922700-be36-4190-b4f2-c7344eec829a",
+      "feeds": {
+        "brightness": "c238a519-8d98-4cd0-bad0-68fed239a56b",
+        "temperature": "6bdc2d43-e27e-4aa6-94f5-ce96006f2fc4",
+        "co2": "7c5c7ae6-a233-4320-8339-9e541080b356",
+        "occupancy": "01e4cdca-5e70-400e-b966-816bc2513614",
+        "humidity": "0d8cf568-8193-4954-b8c5-8963dc41cb5b"
+      }
+    },
+    {
+      "selector": "#tv-studio",
+      "entityId": "c2f0607a-09e2-4312-b469-4f9bbf47fbf9",
+      "feeds": {
+        "brightness": "e3c63f87-9b49-4826-a746-3bae2d119e53",
+        "temperature": "ed941d9a-acfa-478a-aa6c-c231b0564067",
+        "co2": "3e3f05ae-6e03-4d7a-a395-e33d831fc1b0",
+        "occupancy": "4bbdd99a-a335-4a61-bf31-463d989d41f3",
+        "humidity": "0292accc-816a-404b-9178-e4aa20edc390"
+      }
+    },
+    {
+      "selector": "#kitchen",
+      "entityId": "45b814b4-6651-49e1-ab6c-ab8099fcbace",
+      "feeds": {
+        "temperature": "4b4c3094-39ce-4047-903c-a5e2de4b0604",
+        "co2": "dd5b8679-af2a-40cd-92eb-e7978b64be25",
+        "occupancy": "b3b585a6-77be-463a-aa02-f53c977fe7cc",
+        "humidity": "766de1d6-4b07-4d67-b889-3a186a69fe7e"
+      }
+    },
+    {
+      "selector": "#uss",
+      "entityId": "281cdac5-61ef-40a3-8832-e3a2d105215f",
+      "feeds": {
+        "temperature": "9e03f0e7-39ae-48bc-beff-f5d66ef96a0b",
+        "co2": "4e5b9794-18e1-4385-9696-e20b5dca9535",
+        "occupancy": "46d4dc9a-98ca-4df1-adc3-c7afb4f57d23",
+        "humidity": "bbff7ba9-d332-45b7-85a8-478acee53b82"
+      }
+    },
+    {
+      "selector": "#electrical-workshop",
+      "entityId": "7c37f9d5-9331-4533-b67d-9a0c3a25cf3b",
+      "feeds": {
+        "temperature": "473f173a-9409-4135-bbf7-2c19b5dbe38d",
+        "co2": "a2a71e34-18bb-41c1-9ced-5500d68f0a76",
+        "occupancy": "d0e8fa5e-898e-469e-91cd-c682140d2e29",
+        "humidity": "b503d6fb-ce41-4f0a-9f8c-12096ee31b12"
+      }
+    },
+    {
+      "selector": "#big-john",
+      "entityId": "0f650ae9-0d18-498f-adbf-df1975e825b3",
+      "feeds": {
+        "brightness": "ac7f329b-196d-4057-a0a7-caff9004f7c7",
+        "temperature": "33c05447-43ad-4e88-aceb-2d88765bf31d",
+        "co2": "682b9f49-5c8c-46dd-9401-d60b63ebfb4d",
+        "occupancy": "8490400d-8c51-41af-8f0e-6c2dde0ad3fb",
+        "humidity": "7e989410-0aa6-4fbc-a82c-86306a05c22e"
+      }
+    },
+    {
+      "selector": "#maker-a",
+      "entityId": "53801de5-741b-4c86-a092-080c334ca286",
+      "feeds": {
+        "brightness": "a96af061-6f96-4f01-9657-60d4782bc630"
+      }
+    },
+    {
+      "selector": "#maker-b",
+      "entityId": "b2667ce9-0ded-41c6-bd88-05cf9edc0f84",
+      "feeds": {
+        "brightness": "7e65b79f-4210-4580-bd72-cb9a4a5bdf55"
+      }
+    }
+  ]
+}
