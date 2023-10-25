@@ -1,0 +1,37 @@
+[
+  { "name": "alice", "id": "09b274d0-0aa7-42a0-a325-d038ce181cea" },
+  { "name": "env", "id": "69a38a87-a284-4290-a38f-49b5b49da0ec" },
+  { "name": "bob", "id": "17922700-be36-4190-b4f2-c7344eec829a" },
+  { "name": "tv-studio", "id": "c2f0607a-09e2-4312-b469-4f9bbf47fbf9" },
+  { "name": "kitchen", "id": "45b814b4-6651-49e1-ab6c-ab8099fcbace" },
+  { "name": "uss", "id": "281cdac5-61ef-40a3-8832-e3a2d105215f" },
+  {
+    "name": "electrical-workshop",
+    "id": "7c37f9d5-9331-4533-b67d-9a0c3a25cf3b"
+  },
+  { "name": "big-john", "id": "0f650ae9-0d18-498f-adbf-df1975e825b3" },
+  { "name": "maker-a", "id": "53801de5-741b-4c86-a092-080c334ca286" },
+  { "name": "maker-b", "id": "b2667ce9-0ded-41c6-bd88-05cf9edc0f84" },
+
+  { "name": "1.024-1", "id": "3ea29d86-9784-4fdb-8914-a4aeecd85167" },
+
+  { "name": "1.024-3", "id": "e5abf1f6-e9d2-4848-b7a2-41ea102f6250" },
+  { "name": "1.024-4", "id": "d83a32ff-d616-4d15-8ff7-397d738d7733" },
+  { "name": "1.024-5", "id": "f1dbbcb0-1c15-4eb2-822d-8e74a8b3451e" },
+  { "name": "1.024-6", "id": "0801ab67-4b82-4efe-be6d-7d29907c2f7a" },
+  { "name": "1.024-7", "id": "c5583e81-ee96-4b61-a7fd-672f534c9b4e" },
+  { "name": "1.024-8", "id": "3ce1aeea-2310-4a05-b268-79a1ec291599" },
+  { "name": "1.024-9", "id": "6d37535f-d30b-4fa3-9b83-fdc648495137" },
+  { "name": "1.024-10", "id": "f67ca6e5-6e3a-42ec-9dad-752e1fa1dd66" },
+  { "name": "1.024-11", "id": "a433289b-0ed9-4c98-af1b-8abd0a507327" },
+  { "name": "1.024-12", "id": "0d3867a5-1152-4190-98bc-e1397793188e" },
+  { "name": "1.024-13", "id": "7125c0cc-d63f-4f84-b01a-a7be44219cc0" },
+  { "name": "1.024-14", "id": "6e681d9f-784f-4e07-a82f-774398afe3c4" },
+  { "name": "1.024-15", "id": "075091c7-72d2-4839-a478-28d5745dc6bb" },
+  { "name": "1.024-16", "id": "9a96c4e8-8432-437e-9f52-1a2d01d23462" },
+  { "name": "1.024-17", "id": "9c78aa82-15f0-4a8b-b598-15a5b7ca1b3a" },
+  { "name": "big-john", "id": "0f650ae9-0d18-498f-adbf-df1975e825b3" },
+  { "name": "1.042-1", "id": "5bfe315a-ade0-4fcd-97eb-305f2c147a8a" },
+  { "name": "1.042-2", "id": "4cc5c5e0-eb38-4bb5-8640-70a21f2957db" },
+  { "name": "1.042-3", "id": "5ce209ec-c076-4685-b29a-64244e5f7c3f" }
+]

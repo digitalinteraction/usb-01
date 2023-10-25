@@ -46,6 +46,13 @@ async function main() {
     elem.addEventListener("click", (e) => onRoomClick(room, e));
   }
 
+  svg.addEventListener("click", (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    console.log(x, y, e.target.id);
+  });
+
   await fetchData();
   setInterval(() => fetchData(), 10_000);
 }

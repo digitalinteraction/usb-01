@@ -97,5 +97,31 @@
         "brightness": "7e65b79f-4210-4580-bd72-cb9a4a5bdf55"
       }
     }
+  ],
+  "spaces": [
+    {
+      "selector": "#openlab",
+      "sections": [
+        {
+          "x": 22,
+          "y": 105,
+          "entityId": "e5abf1f6-e9d2-4848-b7a2-41ea102f6250",
+          "feeds": {
+            "brightness": "715a2cf3-2649-4eaa-80f6-bbfd27747f13",
+            "occupancy": "490bc459-4fea-45d8-976a-feee7a1631bc",
+            "co2": "16ef840a-c2c1-4b02-ab5d-efb92d5aab00",
+            "temperature": "079b5946-9271-45be-8e8e-ddbd998cff00",
+            "humidity": "e1fe969b-1d60-46fa-bc03-3ab10699baca"
+          },
+          "timeseries": {
+            "brightness": "18502990-a98a-4300-b33a-eaf14f494cc7",
+            "occupancy": "c80cdbc2-0f03-4aa2-aff2-412dfff5fb5a",
+            "co2": "c80cdbc2-0f03-4aa2-aff2-412dfff5fb5a",
+            "temperature": "c80cdbc2-0f03-4aa2-aff2-412dfff5fb5a",
+            "humidity": "c80cdbc2-0f03-4aa2-aff2-412dfff5fb5a"
+          }
+        }
+      ]
+    }
   ]
 }

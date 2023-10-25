@@ -1,4 +1,8 @@
+#!/usr/bin/env deno run --allow-net --watch
+
+//
 // A little Deno proxy to re-host the UO API and inject CORS headers
+//
 
 const BASE_URL = "https://api.usb.urbanobservatory.ac.uk/";
 
