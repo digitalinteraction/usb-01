@@ -35,6 +35,7 @@ svg #labels {
   display: flex;
   gap: 1em;
   margin: 0;
+  flex-wrap: wrap;
 }
 #legend li {
   display: inline-flex;
