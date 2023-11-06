@@ -1,4 +1,4 @@
-#!/usr/bin/env deno run --allow-net --watch
+#!/usr/bin/env deno run --allow-net --watch -A
 
 //
 // A little Deno proxy to re-host the UO API and inject CORS headers
@@ -6,10 +6,18 @@
 
 const BASE_URL = "https://api.usb.urbanobservatory.ac.uk/";
 
+// const cache = await caches.open("cache.db");
+
 Deno.serve({ port: 8080 }, async (request) => {
   const { pathname, search } = new URL(request.url);
   const url = new URL("." + pathname, BASE_URL);
   url.search = search;
+
+  // const cached = await cache.match(request);
+  // if (cached) {
+  //   console.debug("CACHED %s: %o", request.method, pathname);
+  //   return cached;
+  // }
 
   console.debug("%s: %o", request.method, pathname);
 
@@ -27,7 +35,9 @@ Deno.serve({ port: 8080 }, async (request) => {
   const fakeHeaders = new Headers(res.headers);
   fakeHeaders.set("Access-Control-Allow-Origin", "http://localhost:5173");
 
-  return new Response(res.body, {
+  const proxyRes = new Response(res.body, {
     headers: fakeHeaders,
   });
+  // if (proxyRes.ok) cache.put(request, proxyRes);
+  return proxyRes;
 });

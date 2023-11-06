@@ -724,82 +724,15 @@
       "zones": [
         {
           "selector": "#1.005",
-          "entityId": "42aa3b8c-76fc-4bdf-ad58-f175e68a8986",
-          "feeds": {
-            "cooling-valve-position": "4d322ebe-b77b-43b6-9392-249abeaad537",
-            "actual-cooling-set-point": "3105da1a-dbcb-4d14-baf3-6ddf498e8269",
-            "relative-humidity": "fa9faf17-d593-4f07-9f64-3b9a17600ef8",
-            "room-brightness": "15f17535-0f50-432c-bb2b-c5651198b3fb",
-            "co2": "86bb244f-4205-453c-a766-dc6cf76014ee",
-            "room-temperature": "53e7726c-c2b1-4224-9679-15b76c9769e3",
-            "actual-heating-set-point": "feeb6d12-995b-485d-9622-d1704d6eeb03",
-            "mode-input": "493e8fa3-65e3-48b6-9111-b7621771c9ba",
-            "mode": "577185aa-a602-4a36-87e9-e0508e004db5",
-            "heating-valve-position": "0ba3af39-0fc6-4e1d-9680-21b0eb69cae8",
-            "light-power-level": "fc19cb38-0904-4949-9bb3-2e2a0f338317",
-            "occupancy-sensor": "8166fc7e-ae22-4ad8-b7d6-5f130e57db4f",
-            "eco-heating-set-point": "876bc86d-d838-416d-8590-582b0fede23f",
-            "eco-heating-set-point-write": "14cfea3b-725f-4169-aa16-71aca4325673",
-            "comfort-heating-set-point-write": "ebaad84e-1d70-417d-886f-ab49d70a79e2",
-            "comfort-cooling-set-point-write": "29f9f03c-286e-48e8-a159-dc59e06d853a",
-            "comfort-heating-set-point": "8ce3f9a6-1dc4-4d01-af2b-b4e16923841f",
-            "comfort-cooling-set-point": "339143fd-b80e-40a2-b4ea-36b894cb26bd",
-            "eco-cooling-set-point": "2043ef25-79bc-44c4-9fe9-4591475d54f8",
-            "eco-cooling-set-point-write": "2b95dc65-b383-458c-8436-eb819fceb863"
-          }
+          "entityId": "42aa3b8c-76fc-4bdf-ad58-f175e68a8986"
         },
         {
           "selector": "#1.010",
-          "entityId": "63dc9c70-a7a7-4bc4-8b5a-ecfbc3ef7e50",
-          "feeds": {
-            "heating-valve-position": "c2218461-3e0d-4ad2-ac8b-e821074d6db7",
-            "comfort-cooling-set-point-write": "993b4041-a59f-48aa-867c-3aa0e4584905",
-            "eco-heating-set-point": "91cf7548-074d-49a0-be06-e5c1b268d4be",
-            "eco-heating-set-point-write": "dae0ebee-e6c8-4b92-bf49-e30540d85da8",
-            "comfort-heating-set-point-write": "f32f8208-c3e4-4690-bf0b-ab3e3ac03c5a",
-            "comfort-cooling-set-point": "7e6112d9-c0ba-43b5-8792-68e2eed172b6",
-            "comfort-heating-set-point": "6879aa4c-cb5d-4d59-9ea8-1e3eca4b1319",
-            "eco-cooling-set-point-write": "6f1575d5-1993-4409-ba1d-53c58385ab16",
-            "eco-cooling-set-point": "29c31b65-8a10-4b13-902e-04096875df38",
-            "room-brightness": "1fb10d76-5482-4e24-b064-2c17fdd5b970",
-            "room-temperature": "e379eb39-ccaf-4e38-bb4b-a2289d0ef49f",
-            "co2": "f1db5c3a-145a-4e8a-9cf6-499b5fa5ee0e",
-            "mode": "01d347ce-2b1a-44d6-b488-dfe1335d8c1e",
-            "actual-heating-set-point": "f74afa32-5d39-4d34-a29e-58a2de6d9ca8",
-            "mode-input": "cf7a49b0-3c8a-443b-b9ea-7d779ae01763",
-            "actual-cooling-set-point": "e3166d66-ea7c-4775-984d-8216b1e17c5f",
-            "relative-humidity": "8ccbd029-05fa-4c1c-a4ac-2d39ac03fddb",
-            "occupancy-sensor": "21708d0a-163d-4329-8e1a-138d88d94a77",
-            "light-power-level": "c04aeb89-3a43-4ed7-89c7-237a49bca2a0"
-          }
+          "entityId": "63dc9c70-a7a7-4bc4-8b5a-ecfbc3ef7e50"
         },
         {
           "selector": "#1.020",
-          "entityId": "e48eaff6-6e6c-4437-bc52-c0d7f5cd8fe4",
-          "feeds": {
-            "relative-humidity": "2c91dab2-1ce2-4158-9ec5-ac6cd6712779",
-            "co2": "5157fc31-cd91-4eda-b252-777ba8882d8e",
-            "room-brightness": "4de643bb-d643-4d4f-a4d5-a0f974559eb5",
-            "zone1_bmscontrolslabtempmonitoring116_ts3esociallearning_1020_s_02_t": "f280432f-0972-4465-8b4e-b21c80804c16",
-            "zone1_bmscontrolslabtempmonitoring116_ts3esociallearning_1020_s_01_t": "ea48a8e3-3ced-4c1a-b743-b20bf91bd363",
-            "room-temperature": "846bf134-ca4e-4a36-9fde-96665327abd9",
-            "occupancy-sensor": "17e70ea4-0223-4447-9477-7146816b5f28",
-            "mode-input": "d2fd5470-d6d6-4527-aa0e-84bdb79a0334",
-            "mode": "cef05714-22f0-4d5a-b0aa-cfa6b26787e4",
-            "actual-cooling-set-point": "7dfc4c92-7786-4c15-9819-11587baec450",
-            "light-power-level": "71b0050e-2f9f-4452-97de-037d909c8086",
-            "actual-heating-set-point": "da38db08-f26b-4264-9cbb-73a0ef601ef0",
-            "heating-valve-position": "925cab7e-83ac-4cf2-89ed-4d5ca7e8c2b0",
-            "cooling-valve-position": "ddea26f1-4210-4158-bae5-e9f712fd1ca0",
-            "comfort-cooling-set-point-write": "70a55a75-a669-43c6-b01f-4cf7d444d630",
-            "eco-cooling-set-point-write": "c215b6ff-d4ed-4385-8dae-37f715fbc503",
-            "comfort-heating-set-point-write": "b327faa2-b6b5-465d-a5a5-ee89d2428063",
-            "eco-heating-set-point-write": "ee230465-93bf-46cc-8a25-d1d5f6cd6507",
-            "comfort-cooling-set-point": "cdf90ced-0e90-40a0-a658-6b601fc77229",
-            "comfort-heating-set-point": "651e3ce2-a216-4ded-a6b5-9f6ec41baef6",
-            "eco-cooling-set-point": "b7ef4896-1229-4b50-a456-0c720ee366ef",
-            "eco-heating-set-point": "2c8252db-db1d-4370-b645-e7e02cbcb6f2"
-          }
+          "entityId": "e48eaff6-6e6c-4437-bc52-c0d7f5cd8fe4"
         }
       ]
     }
