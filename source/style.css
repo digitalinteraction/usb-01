@@ -27,3 +27,26 @@ svg {
 svg #labels {
   display: none;
 }
+
+#legend p {
+  font-style: italic;
+}
+#legend ul {
+  display: flex;
+  gap: 1em;
+  margin: 0;
+}
+#legend li {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.1;
+}
+.legendColour {
+  display: inline-block;
+  width: 1em;
+  background-color: var(--colour);
+  height: 1em;
+  border-radius: 1em;
+  margin-inline-end: 0.25em;
+  vertical-align: middle;
+}

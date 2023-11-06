@@ -20,25 +20,14 @@ const spaces = new Map();
 const zones = new Map();
 
 // Color stops for expected temperature range
-// const temperatureColours = new ColorInterpolator([
-//   { offset: 0, color: "#360F62" },
-//   { offset: 18, color: "#0C84FD" },
-//   { offset: 19, color: "#5AC8F7" },
-//   { offset: 20, color: "#6CD3C6" },
-//   { offset: 21, color: "#E6CD21" },
-//   { offset: 22, color: "#FE8707" },
-//   { offset: 23, color: "#750700" },
-// ]);
 const temperatureColours = new ColorInterpolator([
-  { offset: -20, color: "#3C1873" }, // sea green
-  { offset: 0, color: "#5ACAF3" }, // yellow
-  { offset: 10, color: "#64D3D0" },
-  { offset: 15, color: "#9FD082" },
-  { offset: 20, color: "#E1CF29" },
-  { offset: 25, color: "#FECB01" },
-  { offset: 30, color: "#FC7F0A" },
-  { offset: 42.5, color: "#FF3F2C" },
-  { offset: 55, color: "#770600" },
+  { offset: 0, color: "#663399" },
+  { offset: 16, color: "#82c3d0" },
+  { offset: 18, color: "#ABCE82" },
+  { offset: 20, color: "#FECB01" },
+  { offset: 22, color: "#FC7F0A" },
+  { offset: 24, color: "#fd3814" },
+  { offset: 42.5, color: "#770600" },
 ]);
 // const temperatureColours = new ColorInterpolator([
 //   { offset: -26, color: "#000000" }, // black
@@ -145,6 +134,24 @@ async function main() {
         }
       }
     }
+  }
+
+  const legend = document
+    .getElementById("legend")
+    .appendChild(document.createElement("ul"));
+  legend.setAttribute("role", "list");
+
+  for (let i = 15; i <= 25; i++) {
+    console.log(i);
+    const li = legend.appendChild(document.createElement("li"));
+    const colour = li.appendChild(document.createElement("span"));
+    li.appendChild(document.createTextNode(`${i}`));
+
+    colour.classList.add("legendColour");
+    colour.style.setProperty(
+      "--colour",
+      ColorInterpolator.toColorString(temperatureColours.interpolateColor(i)),
+    );
   }
 
   svg.addEventListener("click", (e) => {
