@@ -9,7 +9,7 @@ let svg = null;
 const UO_BASE =
   location.hostname === "localhost"
     ? new URL("http://localhost:8080/api/v2/")
-    : new URL("https://api.usb.urbanobservatory.ac.uk/api/v2");
+    : new URL("https://api.usb.urbanobservatory.ac.uk/api/v2/");
 
 const canvas = document.getElementById("canvas");
 
