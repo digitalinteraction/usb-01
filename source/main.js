@@ -80,7 +80,7 @@ const gradients = {
       { offset: 700, color: "#0000FF" },
       { offset: 1_000, color: "#FF0000" },
     ],
-    [0, 500, 1000, 1500, 2000, 5000],
+    [0, 200, 400, 600, 800, 1000],
   ),
   "room-brightness": createGradient(
     [
