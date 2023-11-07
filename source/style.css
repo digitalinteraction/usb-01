@@ -1,3 +1,7 @@
+main {
+  position: relative;
+}
+
 header {
   font-family: ui-monospace, monospace;
   font-weight: 600;
@@ -24,7 +28,28 @@ svg {
   height: auto;
 }
 
-svg #labels {
+/* Description list */
+@media (max-width: 420px) {
+  dl dd {
+    margin-inline-start: 2ch;
+  }
+  dl > dd + dt {
+    margin-top: var(--s-1);
+  }
+}
+@media (min-width: 419px) {
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5ch 1ch;
+  }
+}
+dl dt {
+  font-weight: 600;
+  font-style: italic;
+}
+
+svg #labels text:not([aria-current]) {
   display: none;
 }
 
@@ -50,4 +75,23 @@ svg #labels {
   border-radius: 1em;
   margin-inline-end: 0.25em;
   vertical-align: middle;
+}
+
+#popup {
+  width: 640px;
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+}
+#popup::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#popup:focus {
+  outline: none;
+}
+#popup .toolbar {
+  position: sticky;
+  bottom: 0;
 }

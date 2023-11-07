@@ -13,8 +13,8 @@
         <polygon id="bob" stroke="#000000" points="189 78 155 78 155 141 189 141"></polygon>
         <polygon id="eve" stroke="#000000" points="118 78 118 141 155 141 155 78"></polygon>
         <polygon id="alice" stroke="#000000" points="90 78 90 141 118 141 118 78"></polygon>
-        <polygon id="maker-a" stroke="#000000" points="262 410 262 473 308 473 308 410"></polygon>
-        <polygon id="maker-b" stroke="#000000" points="262 473 262 542.818857 270.551326 550.214953 300.803076 550.214953 308 542.818857 308 473"></polygon>
+        <polygon id="north-makerspace" stroke="#000000" points="262 410 262 473 308 473 308 410"></polygon>
+        <polygon id="south-makerspace" stroke="#000000" points="262 473 262 542.818857 270.551326 550.214953 300.803076 550.214953 308 542.818857 308 473"></polygon>
         <rect id="big-john" stroke="#000000" transform="translate(601.9388, 289.84) rotate(-44.5) translate(-601.9388, -289.84)" x="570.438757" y="266.340027" width="63" height="47"></rect>
         <path d="M330,119 C330,119 313.666667,119 281,119 L281,158 L330,158 C330,132 330,119 330,119 Z" id="toilets-nw" stroke="#000000"></path>
         <path d="M265,103 L265,158 L281,158 C281,121.333333 281,103 281,103 C281,103 275.666667,103 265,103 Z" id="corridor-nw" stroke="#000000" fill="#EAEAEA"></path>
@@ -29,155 +29,155 @@
         <polygon id="corridor-west" stroke="#000000" fill="#EAEAEA" points="134 396.017539 134 412.017539 178 412.017539 178 396.017539"></polygon>
         <rect id="lifts-west" stroke="#000000" fill="#B8B8B8" x="261" y="240" width="36" height="66"></rect>
         <polygon id="atrium-stairs-up" stroke="#000000" fill="#B8B8B8" transform="translate(362, 260) scale(-1, -1) translate(-362, -260)" points="404 240.033359 404 280 320 280 320 240"></polygon>
-        <g id="1.024" transform="translate(90, 78)">
-            <path d="M0,63 L0,196.898571 L88,197 L88,318.017539 L144,318.017539 L144,162 L440.001578,162 L462.249239,140 L505.877514,184.522771 L517.934778,173 L506.084543,161.032026 L624.315755,44.9268424 L582.670244,0 C570.179668,0 563.93438,0 563.93438,0 C563.93438,0 563.93438,26.6666667 563.93438,80 L446,80 L446,0 L240,0 L240,80 L99,80 L99,63 L0,63 Z" id="open-lab-floor" stroke="#000000" fill="#EAEAEA"></path>
-            <circle id="1.024-zone-1" fill="#000000" cx="120.5" cy="253.5" r="2.5"></circle>
-            <circle id="1.024-zone-3" fill="#000000" cx="35.5" cy="129.5" r="2.5"></circle>
-            <circle id="1.024-zone-4" fill="#000000" cx="80.5" cy="129.5" r="2.5"></circle>
-            <circle id="1.024-zone-5" fill="#000000" cx="120.5" cy="129.5" r="2.5"></circle>
-            <circle id="1.024-zone-6" fill="#000000" cx="161.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-7" fill="#000000" cx="213.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-8" fill="#000000" cx="265.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-9" fill="#000000" cx="265.5" cy="40.5" r="2.5"></circle>
-            <circle id="1.024-zone-10" fill="#000000" cx="317.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-11" fill="#000000" cx="317.5" cy="40.5" r="2.5"></circle>
-            <circle id="1.024-zone-12" fill="#000000" cx="369.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-13" fill="#000000" cx="369.5" cy="40.5" r="2.5"></circle>
-            <circle id="1.024-zone-14" fill="#000000" cx="421.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-15" fill="#000000" cx="421.5" cy="40.5" r="2.5"></circle>
-            <circle id="1.024-zone-16" fill="#000000" cx="488.5" cy="117.5" r="2.5"></circle>
-            <circle id="1.024-zone-17" fill="#000000" cx="591.5" cy="42.5" r="2.5"></circle>
-        </g>
         <g id="foyer" transform="translate(144, 240)">
             <path d="M330,0 C330,22.6666667 330,34 330,34 C330,34 318,34 294,34 L294,63 L186,63 L186,141.303566 L164,170 L118,170 L118,302.818857 L122.046644,320.834706 L122.046644,412.253002 L0,532 L0,433 L59,433 L86,401.868597 L96,353 L96,293 L86,247.557619 L59.2045036,214.925311 L33.846945,214.925311 L34,156 L90,156 L90,0 L117,0 L117,66 L153,66 L153,0 L176,0 L176,40 L260,40 L260,0 L330,0 Z" id="foyer-floor" stroke="#000000" fill="#EAEAEA"></path>
-            <circle id="1.020" fill="#000000" cx="155.5" cy="111.5" r="2.5"></circle>
-            <circle id="1.010" fill="#000000" cx="81.5" cy="192.5" r="2.5"></circle>
-            <circle id="1.005" fill="#000000" cx="21.5" cy="467.5" r="2.5"></circle>
+            <circle id="north-foyer-zone" fill="#000000" cx="155.5" cy="111.5" r="2.5"></circle>
+            <circle id="center-foyer-zone" fill="#000000" cx="81.5" cy="192.5" r="2.5"></circle>
+            <circle id="south-foyer-zone" fill="#000000" cx="21.5" cy="467.5" r="2.5"></circle>
         </g>
-        <g id="1.042" transform="translate(596.0845, 123)">
+        <g id="open-lab" transform="translate(90, 78)">
+            <path d="M0,63 L0,196.898571 L88,197 L88,318.017539 L144,318.017539 L144,162 L440.001578,162 L462.249239,140 L505.877514,184.522771 L517.934778,173 L506.084543,161.032026 L624.315755,44.9268424 L582.670244,0 C570.179668,0 563.93438,0 563.93438,0 C563.93438,0 563.93438,26.6666667 563.93438,80 L446,80 L446,0 L240,0 L240,80 L99,80 L99,63 L0,63 Z" id="open-lab-floor" stroke="#000000" fill="#EAEAEA"></path>
+            <circle id="open-lab-zone-1" fill="#000000" cx="120.5" cy="253.5" r="2.5"></circle>
+            <circle id="open-lab-zone-3" fill="#000000" cx="35.5" cy="129.5" r="2.5"></circle>
+            <circle id="open-lab-zone-4" fill="#000000" cx="80.5" cy="129.5" r="2.5"></circle>
+            <circle id="open-lab-zone-5" fill="#000000" cx="120.5" cy="129.5" r="2.5"></circle>
+            <circle id="open-lab-zone-6" fill="#000000" cx="161.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-7" fill="#000000" cx="213.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-8" fill="#000000" cx="265.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-9" fill="#000000" cx="265.5" cy="40.5" r="2.5"></circle>
+            <circle id="open-lab-zone-10" fill="#000000" cx="317.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-11" fill="#000000" cx="317.5" cy="40.5" r="2.5"></circle>
+            <circle id="open-lab-zone-12" fill="#000000" cx="369.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-13" fill="#000000" cx="369.5" cy="40.5" r="2.5"></circle>
+            <circle id="open-lab-zone-14" fill="#000000" cx="421.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-15" fill="#000000" cx="421.5" cy="40.5" r="2.5"></circle>
+            <circle id="open-lab-zone-16" fill="#000000" cx="488.5" cy="117.5" r="2.5"></circle>
+            <circle id="open-lab-zone-17" fill="#000000" cx="591.5" cy="42.5" r="2.5"></circle>
+        </g>
+        <g id="teaching-space" transform="translate(596.0845, 123)">
             <polygon id="teaching-space-floor" stroke="#000000" points="0 116.032026 117.915457 1.42108547e-14 161.915457 47 44.8581929 161.680055"></polygon>
-            <circle id="1.042-zone-3" fill="#000000" cx="120.415457" cy="46.5" r="2.5"></circle>
-            <circle id="1.042-zone-2" fill="#000000" cx="77.4154575" cy="84.5" r="2.5"></circle>
-            <circle id="1.042-zone-1" fill="#000000" cx="36.4154575" cy="126.5" r="2.5"></circle>
+            <circle id="teaching-space-zone-3" fill="#000000" cx="120.415457" cy="46.5" r="2.5"></circle>
+            <circle id="teaching-space-zone-2" fill="#000000" cx="77.4154575" cy="84.5" r="2.5"></circle>
+            <circle id="teaching-space-zone-1" fill="#000000" cx="36.4154575" cy="126.5" r="2.5"></circle>
         </g>
         <g id="doors" transform="translate(92, 139)" fill="#000000" stroke="#000000">
-            <rect id="Door-16" x="175.5" y="17.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-15" transform="translate(173, 9) rotate(-90) translate(-173, -9)" x="167.5" y="7.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-14" x="83.5" y="0.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-13" x="124.5" y="17.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-12" x="49.5" y="0.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-11" x="12.5" y="0.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-10" x="144.5" y="99.5" width="22" height="3" rx="1"></rect>
-            <rect id="Door-9" x="314.5" y="99.5" width="19" height="3" rx="1"></rect>
-            <rect id="Door-8" x="88.5" y="255.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-7" transform="translate(86, 265) rotate(-270) translate(-86, -265)" x="80.5" y="263.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-6" x="0.5" y="177.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-5" x="84.5" y="138.5" width="3" height="11" rx="1"></rect>
-            <rect id="Door-4" x="480.5" y="17.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-3" transform="translate(477, 9) rotate(-90) translate(-477, -9)" x="471.5" y="7.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-2" x="173.5" y="269.5" width="11" height="3" rx="1"></rect>
-            <rect id="Door-1" x="188.5" y="332.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-16" x="175.5" y="17.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-15" transform="translate(173, 9) rotate(-90) translate(-173, -9)" x="167.5" y="7.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-14" x="83.5" y="0.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-13" x="124.5" y="17.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-12" x="49.5" y="0.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-11" x="12.5" y="0.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-10" x="144.5" y="99.5" width="22" height="3" rx="1"></rect>
+            <rect id="door-9" x="314.5" y="99.5" width="19" height="3" rx="1"></rect>
+            <rect id="door-8" x="88.5" y="255.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-7" transform="translate(86, 265) rotate(-270) translate(-86, -265)" x="80.5" y="263.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-6" x="0.5" y="177.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-5" x="84.5" y="138.5" width="3" height="11" rx="1"></rect>
+            <rect id="door-4" x="480.5" y="17.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-3" transform="translate(477, 9) rotate(-90) translate(-477, -9)" x="471.5" y="7.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-2" x="173.5" y="269.5" width="11" height="3" rx="1"></rect>
+            <rect id="door-1" x="188.5" y="332.5" width="11" height="3" rx="1"></rect>
         </g>
         <g id="labels" transform="translate(96.1433, 87)" fill="#000000" font-size="12" font-weight="normal">
             <text id="?" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="513.921105" y="53">?</tspan>
             </text>
-            <text id="Plant" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="east-plant-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="504.185753" y="11">Plant</tspan>
             </text>
-            <text id="Stairs" transform="translate(455.5589, 32.3523) rotate(-90) translate(-455.5589, -32.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="east-stairs-label" transform="translate(455.5589, 32.3523) rotate(-90) translate(-455.5589, -32.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="441.138976" y="36.3523045">Stairs</tspan>
             </text>
-            <text id="Lifts" transform="translate(182.5589, 187.3523) rotate(-90) translate(-182.5589, -187.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="center-lifts-label" transform="translate(182.5589, 187.3523) rotate(-90) translate(-182.5589, -187.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="171.801085" y="191.352304">Lifts</tspan>
             </text>
             <text id="?" transform="translate(21.5589, 638.3523) rotate(-90) translate(-21.5589, -638.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="18.7346787" y="642.352304">?</tspan>
             </text>
-            <text id="TV-Studio" transform="translate(113.5589, 32.3523) rotate(-90) translate(-113.5589, -32.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="tv-studio-label" transform="translate(113.5589, 32.3523) rotate(-90) translate(-113.5589, -32.3523)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="106.22296" y="29.3523045">TV</tspan>
                 <tspan x="97.1292099" y="43.3523045">Studio</tspan>
             </text>
-            <text id="Teaching-space-label" transform="translate(571.9688, 124.5637) rotate(-45) translate(-571.9688, -124.5637)" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="teaching-space-label" transform="translate(571.9688, 124.5637) rotate(-45) translate(-571.9688, -124.5637)" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="532.848683" y="128.563722">Teaching space</tspan>
             </text>
-            <text id="Big-John" transform="translate(501.4254, 205.0341) rotate(-43) translate(-501.4254, -205.0341)" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="big-john-label" transform="translate(501.4254, 205.0341) rotate(-43) translate(-501.4254, -205.0341)" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="493.269161" y="202.034057">Big</tspan>
                 <tspan x="488.87463" y="216.034057">John</tspan>
             </text>
-            <text id="Stairs" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="foyer-upstairs-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="248.659386" y="177">Stairs</tspan>
             </text>
-            <text id="Stairs-Copy" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="foyer-downstairs-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="345.659386" y="205">Stairs</tspan>
             </text>
-            <text id="Toilets" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="north-toilets-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="192.84298" y="58">Toilets</tspan>
             </text>
-            <text id="Toilets-Copy" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="south-toilets-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="42.8429798" y="351">Toilets</tspan>
             </text>
-            <text id="Lecture-theatre" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="lecture-theatre-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="22.034386" y="482">Lecture theatre</tspan>
             </text>
-            <text id="Kitchen" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="kitchen-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="17.822472" y="213">Kitchen</tspan>
             </text>
-            <text id="Plant" font-family="SFProDisplay-Regular, SF Pro Display">
+            <text id="north-plant-label" font-family="SFProDisplay-Regular, SF Pro Display">
                 <tspan x="198.185753" y="17">Plant</tspan>
             </text>
-            <text id="Plant-Copy" transform="translate(13.3462, 335.0593) rotate(-90) translate(-13.3462, -335.0593)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="west-plant-label" transform="translate(13.3462, 335.0593) rotate(-90) translate(-13.3462, -335.0593)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="0.522935905" y="339.059311">Plant</tspan>
             </text>
-            <text id="Bob" transform="translate(76, 23.1162) rotate(-90) translate(-76, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="bob-label" transform="translate(76, 23.1162) rotate(-90) translate(-76, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="65.6435547" y="27.116241">Bob</tspan>
             </text>
-            <text id="Eve" transform="translate(40, 23.1162) rotate(-90) translate(-40, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="eve-label" transform="translate(40, 23.1162) rotate(-90) translate(-40, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="30.8007813" y="27.116241">Eve</tspan>
             </text>
-            <text id="Alice-Copy" transform="translate(7, 23.1162) rotate(-90) translate(-7, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="alice-label" transform="translate(7, 23.1162) rotate(-90) translate(-7, -23.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="-5.3984375" y="27.116241">Alice</tspan>
             </text>
-            <text id="USS" transform="translate(16, 269.1162) rotate(-90) translate(-16, -269.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="uss-label" transform="translate(16, 269.1162) rotate(-90) translate(-16, -269.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="4.62109375" y="273.116241">USS</tspan>
             </text>
-            <text id="Maker-1" transform="translate(190, 354.1162) rotate(-90) translate(-190, -354.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="north-makerspace-label" transform="translate(190, 354.1162) rotate(-90) translate(-190, -354.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="170.078125" y="358.116241">Maker 1</tspan>
             </text>
-            <text id="Maker-2" transform="translate(189, 424.1162) rotate(-90) translate(-189, -424.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="south-makerspace-label" transform="translate(189, 424.1162) rotate(-90) translate(-189, -424.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="168.260742" y="428.116241">Maker 2</tspan>
             </text>
-            <text id="Electrical-Workshop" transform="translate(58, 272.1162) rotate(-90) translate(-58, -272.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="electrical-workshop-label" transform="translate(58, 272.1162) rotate(-90) translate(-58, -272.1162)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="34.9052734" y="269.116241">Electrical</tspan>
                 <tspan x="32.1103516" y="283.116241">Workshop</tspan>
             </text>
-            <text id="Stairs" transform="translate(151.8567, 31) rotate(-90) translate(-151.8567, -31)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
+            <text id="north-stairs-label" transform="translate(151.8567, 31) rotate(-90) translate(-151.8567, -31)" font-family="SFProDisplay-RegularItalic, SF Pro Display" font-style="italic">
                 <tspan x="137.43673" y="35">Stairs</tspan>
             </text>
         </g>
         <g id="tables" transform="translate(104, 79)" fill="#626262" opacity="0.4" stroke="#000000" stroke-linejoin="round">
-            <rect id="Table-105" x="0" y="175" width="14" height="20"></rect>
-            <rect id="Table-101" x="240" y="0" width="14" height="80"></rect>
-            <rect id="Table-101-Copy" x="270" y="0" width="14" height="80"></rect>
-            <rect id="Table-101-Copy-2" x="300" y="0" width="14" height="80"></rect>
-            <rect id="Table-101-Copy-3" x="348" y="0" width="14" height="80"></rect>
-            <rect id="Table-101-Copy-4" x="376" y="0" width="14" height="80"></rect>
-            <rect id="Table-101-Copy-6" x="404" y="0" width="14" height="80"></rect>
-            <rect id="Table-85" x="0" y="83" width="14" height="60"></rect>
-            <rect id="Table-75" x="30" y="155" width="14" height="40"></rect>
-            <rect id="Table-31" x="30" y="83" width="14" height="60"></rect>
-            <rect id="Table-24" x="60" y="155" width="14" height="40"></rect>
-            <rect id="Table-19" x="286" y="100" width="14" height="60"></rect>
-            <rect id="Table-19-Copy-3" x="330" y="100" width="14" height="60"></rect>
-            <rect id="Table-19-Copy-4" x="360" y="100" width="14" height="60"></rect>
-            <rect id="Table-19-Copy-5" x="390" y="100" width="14" height="60"></rect>
-            <rect id="Table-19-Copy" x="256" y="100" width="14" height="60"></rect>
-            <rect id="Table-19-Copy-2" x="226" y="120" width="14" height="40"></rect>
-            <rect id="Table-15" x="60" y="103" width="14" height="40"></rect>
-            <rect id="Table-12-Copy" transform="translate(109, 203) rotate(-270) translate(-109, -203)" x="101" y="183" width="16" height="40"></rect>
-            <rect id="Table-12-Copy-2" transform="translate(109, 235) rotate(-270) translate(-109, -235)" x="101" y="215" width="16" height="40"></rect>
-            <rect id="Table-12-Copy-3" transform="translate(109, 267) rotate(-270) translate(-109, -267)" x="101" y="247" width="16" height="40"></rect>
-            <rect id="Table-12-Copy-4" transform="translate(109, 299) rotate(-270) translate(-109, -299)" x="101" y="279" width="16" height="40"></rect>
+            <rect id="table-22" x="0" y="175" width="14" height="20"></rect>
+            <rect id="table-21" x="240" y="0" width="14" height="80"></rect>
+            <rect id="table-20" x="270" y="0" width="14" height="80"></rect>
+            <rect id="table-19" x="300" y="0" width="14" height="80"></rect>
+            <rect id="table-18" x="348" y="0" width="14" height="80"></rect>
+            <rect id="table-17" x="376" y="0" width="14" height="80"></rect>
+            <rect id="table-16" x="404" y="0" width="14" height="80"></rect>
+            <rect id="table-15" x="0" y="83" width="14" height="60"></rect>
+            <rect id="table-14" x="30" y="155" width="14" height="40"></rect>
+            <rect id="table-13" x="30" y="83" width="14" height="60"></rect>
+            <rect id="table-12" x="60" y="155" width="14" height="40"></rect>
+            <rect id="table-11" x="286" y="100" width="14" height="60"></rect>
+            <rect id="table-10" x="330" y="100" width="14" height="60"></rect>
+            <rect id="table-9" x="360" y="100" width="14" height="60"></rect>
+            <rect id="table-8" x="390" y="100" width="14" height="60"></rect>
+            <rect id="table-7" x="256" y="100" width="14" height="60"></rect>
+            <rect id="table-6" x="226" y="120" width="14" height="40"></rect>
+            <rect id="table-5" x="60" y="103" width="14" height="40"></rect>
+            <rect id="table-4" transform="translate(109, 203) rotate(-270) translate(-109, -203)" x="101" y="183" width="16" height="40"></rect>
+            <rect id="table-3" transform="translate(109, 235) rotate(-270) translate(-109, -235)" x="101" y="215" width="16" height="40"></rect>
+            <rect id="table-2" transform="translate(109, 267) rotate(-270) translate(-109, -267)" x="101" y="247" width="16" height="40"></rect>
+            <rect id="table-1" transform="translate(109, 299) rotate(-270) translate(-109, -299)" x="101" y="279" width="16" height="40"></rect>
         </g>
     </g>
 </svg>

@@ -1,7 +1,8 @@
 {
   "rooms": [
     {
-      "selector": "#alice",
+      "floorSelector": "#alice",
+      "labelSelector": "#alice-label",
       "entityId": "09b274d0-0aa7-42a0-a325-d038ce181cea",
       "feeds": {
         "heating-valve-position": "6aafccd8-5976-4988-a73b-5fd97a4f8db8",
@@ -26,7 +27,8 @@
       }
     },
     {
-      "selector": "#eve",
+      "floorSelector": "#eve",
+      "labelSelector": "#eve-label",
       "entityId": "69a38a87-a284-4290-a38f-49b5b49da0ec",
       "feeds": {
         "actual-heating-set-point": "81fbd836-f155-4544-941b-4338c2cc56e5",
@@ -51,7 +53,8 @@
       }
     },
     {
-      "selector": "#bob",
+      "floorSelector": "#bob",
+      "labelSelector": "#bob-label",
       "entityId": "17922700-be36-4190-b4f2-c7344eec829a",
       "feeds": {
         "actual-cooling-set-point": "cf69d0f6-316c-45bf-bc30-17f0b3c0ed4d",
@@ -77,7 +80,8 @@
       }
     },
     {
-      "selector": "#tv-studio",
+      "floorSelector": "#tv-studio",
+      "labelSelector": "#tv-studio-label",
       "entityId": "c2f0607a-09e2-4312-b469-4f9bbf47fbf9",
       "feeds": {
         "actual-heating-set-point": "17de11b4-ed43-47a1-a779-5d8c2f76f933",
@@ -104,7 +108,8 @@
       }
     },
     {
-      "selector": "#kitchen",
+      "floorSelector": "#kitchen",
+      "labelSelector": "#kitchen-label",
       "entityId": "45b814b4-6651-49e1-ab6c-ab8099fcbace",
       "feeds": {
         "light-power-level": "487f3bff-aff4-46cf-b328-69cfa3dd2f8f",
@@ -131,7 +136,8 @@
       }
     },
     {
-      "selector": "#uss",
+      "floorSelector": "#uss",
+      "labelSelector": "#uss-label",
       "entityId": "281cdac5-61ef-40a3-8832-e3a2d105215f",
       "feeds": {
         "occupancy-sensor": "46d4dc9a-98ca-4df1-adc3-c7afb4f57d23",
@@ -158,7 +164,8 @@
       }
     },
     {
-      "selector": "#electrical-workshop",
+      "floorSelector": "#electrical-workshop",
+      "labelSelector": "#electrical-workshop-label",
       "entityId": "7c37f9d5-9331-4533-b67d-9a0c3a25cf3b",
       "feeds": {
         "light-power-level": "1a3505d5-f0fa-4ade-8985-505dc5e7391c",
@@ -184,7 +191,8 @@
       }
     },
     {
-      "selector": "#big-john",
+      "floorSelector": "#big-john",
+      "labelSelector": "#big-john-label",
       "entityId": "0f650ae9-0d18-498f-adbf-df1975e825b3",
       "feeds": {
         "room-brightness": "ac7f329b-196d-4057-a0a7-caff9004f7c7",
@@ -210,7 +218,8 @@
       }
     },
     {
-      "selector": "#maker-a",
+      "floorSelector": "#north-makerspace",
+      "labelSelector": "#north-makerspace-label",
       "entityId": "53801de5-741b-4c86-a092-080c334ca286",
       "feeds": {
         "room-brightness": "a96af061-6f96-4f01-9657-60d4782bc630",
@@ -218,7 +227,8 @@
       }
     },
     {
-      "selector": "#maker-b",
+      "floorSelector": "#south-makerspace",
+      "labelSelector": "#south-makerspace-label",
       "entityId": "b2667ce9-0ded-41c6-bd88-05cf9edc0f84",
       "feeds": {
         "room-brightness": "7e65b79f-4210-4580-bd72-cb9a4a5bdf55",
@@ -228,10 +238,10 @@
   ],
   "spaces": [
     {
-      "selector": "#open-lab-floor",
+      "floorSelector": "#open-lab-floor",
       "zones": [
         {
-          "selector": "#1.024-zone-1",
+          "selector": "#open-lab-zone-1",
           "entityId": "3ea29d86-9784-4fdb-8914-a4aeecd85167",
           "feeds": {
             "room-brightness": "6d60d531-1487-4cbf-8692-f666c368e87a",
@@ -239,7 +249,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-3",
+          "selector": "#open-lab-zone-3",
           "entityId": "e5abf1f6-e9d2-4848-b7a2-41ea102f6250",
           "feeds": {
             "eco-heating-set-point": "54c96de6-f6a0-451a-b77c-ef942932757d",
@@ -266,7 +276,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-4",
+          "selector": "#open-lab-zone-4",
           "entityId": "d83a32ff-d616-4d15-8ff7-397d738d7733",
           "feeds": {
             "window-position": "00ab35cf-b041-4fdf-9243-2ed04c2eb01e",
@@ -293,7 +303,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-5",
+          "selector": "#open-lab-zone-5",
           "entityId": "f1dbbcb0-1c15-4eb2-822d-8e74a8b3451e",
           "feeds": {
             "actual-cooling-set-point": "82bd8a1f-fcb6-41c6-ad31-0b2b4298578e",
@@ -319,7 +329,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-6",
+          "selector": "#open-lab-zone-6",
           "entityId": "0801ab67-4b82-4efe-be6d-7d29907c2f7a",
           "feeds": {
             "actual-heating-set-point": "ad951612-5bf8-4599-9235-9bb43f752587",
@@ -344,7 +354,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-7",
+          "selector": "#open-lab-zone-7",
           "entityId": "c5583e81-ee96-4b61-a7fd-672f534c9b4e",
           "feeds": {
             "actual-cooling-set-point": "2ae0b728-c839-459f-854c-45d523813a72",
@@ -370,7 +380,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-8",
+          "selector": "#open-lab-zone-8",
           "entityId": "3ce1aeea-2310-4a05-b268-79a1ec291599",
           "feeds": {
             "actual-heating-set-point": "5e0d43cd-fda9-4c99-a9b4-cf21543b3322",
@@ -396,7 +406,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-9",
+          "selector": "#open-lab-zone-9",
           "entityId": "6d37535f-d30b-4fa3-9b83-fdc648495137",
           "feeds": {
             "actual-cooling-set-point": "970d2461-e3da-45d2-bdb0-5effbeb56848",
@@ -423,7 +433,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-10",
+          "selector": "#open-lab-zone-10",
           "entityId": "f67ca6e5-6e3a-42ec-9dad-752e1fa1dd66",
           "feeds": {
             "actual-cooling-set-point": "2fe1b38b-2163-4b3a-a0bd-d211047a36e6",
@@ -448,7 +458,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-11",
+          "selector": "#open-lab-zone-11",
           "entityId": "a433289b-0ed9-4c98-af1b-8abd0a507327",
           "feeds": {
             "actual-heating-set-point": "fa24a7b8-822f-4ecd-a38c-29469066d867",
@@ -475,7 +485,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-12",
+          "selector": "#open-lab-zone-12",
           "entityId": "0d3867a5-1152-4190-98bc-e1397793188e",
           "feeds": {
             "room-brightness": "cf4f9cd5-223e-486a-a443-b5870841485a",
@@ -501,7 +511,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-13",
+          "selector": "#open-lab-zone-13",
           "entityId": "7125c0cc-d63f-4f84-b01a-a7be44219cc0",
           "feeds": {
             "room-brightness": "4eab4f08-0f83-4a23-a18e-ea9ffc2ebe13",
@@ -528,7 +538,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-14",
+          "selector": "#open-lab-zone-14",
           "entityId": "6e681d9f-784f-4e07-a82f-774398afe3c4",
           "feeds": {
             "room-brightness": "3726921c-f00a-47a3-972c-c2ae305202ee",
@@ -555,7 +565,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-15",
+          "selector": "#open-lab-zone-15",
           "entityId": "075091c7-72d2-4839-a478-28d5745dc6bb",
           "feeds": {
             "room-brightness": "fc93c5eb-2ca7-4059-a268-36163b9a6260",
@@ -581,7 +591,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-16",
+          "selector": "#open-lab-zone-16",
           "entityId": "9a96c4e8-8432-437e-9f52-1a2d01d23462",
           "feeds": {
             "room-brightness": "6c287227-13a0-4c47-84b3-92cedabbfd43",
@@ -607,7 +617,7 @@
           }
         },
         {
-          "selector": "#1.024-zone-17",
+          "selector": "#open-lab-zone-17",
           "entityId": "9c78aa82-15f0-4a8b-b598-15a5b7ca1b3a",
           "feeds": {
             "room-brightness": "216641cb-c24b-4c3b-bed3-7fdb288e27cc",
@@ -635,10 +645,10 @@
       ]
     },
     {
-      "selector": "#teaching-space-floor",
+      "floorSelector": "#teaching-space-floor",
       "zones": [
         {
-          "selector": "#1.042-zone-1",
+          "selector": "#teaching-space-zone-1",
           "entityId": "5bfe315a-ade0-4fcd-97eb-305f2c147a8a",
           "feeds": {
             "light-power-level": "04243459-02cf-40a2-b12d-ad77ba9d0968",
@@ -664,7 +674,7 @@
           }
         },
         {
-          "selector": "#1.042-zone-2",
+          "selector": "#teaching-space-zone-2",
           "entityId": "4cc5c5e0-eb38-4bb5-8640-70a21f2957db",
           "feeds": {
             "light-power-level": "7eef20d8-99de-4830-8ebd-6efee1342a55",
@@ -691,7 +701,7 @@
           }
         },
         {
-          "selector": "#1.042-zone-3",
+          "selector": "#teaching-space-zone-3",
           "entityId": "5ce209ec-c076-4685-b29a-64244e5f7c3f",
           "feeds": {
             "room-brightness": "824d9096-51ce-4ab4-acb0-6eccdf455a3c",
@@ -720,10 +730,10 @@
       ]
     },
     {
-      "selector": "#foyer-floor",
+      "floorSelector": "#foyer-floor",
       "zones": [
         {
-          "selector": "#1.005",
+          "selector": "#south-foyer-zone",
           "entityId": "42aa3b8c-76fc-4bdf-ad58-f175e68a8986",
           "feeds": {
             "cooling-valve-position": "4d322ebe-b77b-43b6-9392-249abeaad537",
@@ -749,7 +759,7 @@
           }
         },
         {
-          "selector": "#1.010",
+          "selector": "#center-foyer-zone",
           "entityId": "63dc9c70-a7a7-4bc4-8b5a-ecfbc3ef7e50",
           "feeds": {
             "heating-valve-position": "c2218461-3e0d-4ad2-ac8b-e821074d6db7",
@@ -774,7 +784,7 @@
           }
         },
         {
-          "selector": "#1.020",
+          "selector": "#north-foyer-zone",
           "entityId": "e48eaff6-6e6c-4437-bc52-c0d7f5cd8fe4",
           "feeds": {
             "relative-humidity": "2c91dab2-1ce2-4158-9ec5-ac6cd6712779",
