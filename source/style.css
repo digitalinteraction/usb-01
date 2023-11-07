@@ -78,15 +78,6 @@ svg #tables {
   margin-inline-end: 0.25em;
   vertical-align: middle;
 }
-
-#popup {
-  width: 640px;
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  transform: translate(-50%, -50%);
-  overflow-y: auto;
-}
 #popup::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }

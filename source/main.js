@@ -66,8 +66,8 @@ const gradients = {
   ),
   "occupancy-sensor": createGradient(
     [
-      { offset: 0, color: "#000000" },
-      { offset: 1, color: "#FFFFFF" },
+      { offset: 0, color: "#0c087a" },
+      { offset: 1, color: "#74e7ee" },
     ],
     [0, 1],
   ),
@@ -75,13 +75,12 @@ const gradients = {
   // https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms
   co2: createGradient(
     [
-      { offset: 0, color: "#000000" },
-      { offset: 500, color: "#00FF00" },
-      { offset: 1_000, color: "#0000FF" },
-      { offset: 2_000, color: "#FF0000" },
-      { offset: 5_000, color: "#000000" },
+      { offset: 0, color: "#FFFFFF" },
+      { offset: 400, color: "#00FF00" },
+      { offset: 700, color: "#0000FF" },
+      { offset: 1_000, color: "#FF0000" },
     ],
-    [0, 500, 1500, 2000, 5000],
+    [0, 500, 1000, 1500, 2000, 5000],
   ),
 };
 
