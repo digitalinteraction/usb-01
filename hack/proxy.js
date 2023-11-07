@@ -6,18 +6,18 @@
 
 const BASE_URL = "https://api.usb.urbanobservatory.ac.uk/";
 
-// const cache = await caches.open("cache.db");
+const cache = Deno.args.includes("--cache") ? await caches.open("v1") : null;
 
 Deno.serve({ port: 8080 }, async (request) => {
   const { pathname, search } = new URL(request.url);
   const url = new URL("." + pathname, BASE_URL);
   url.search = search;
 
-  // const cached = await cache.match(request);
-  // if (cached) {
-  //   console.debug("CACHED %s: %o", request.method, pathname);
-  //   return cached;
-  // }
+  const cached = await cache?.match(request);
+  if (cached) {
+    console.debug("CACHED %s: %o", request.method, pathname);
+    return cached;
+  }
 
   console.debug("%s: %o", request.method, pathname);
 
@@ -38,6 +38,8 @@ Deno.serve({ port: 8080 }, async (request) => {
   const proxyRes = new Response(res.body, {
     headers: fakeHeaders,
   });
-  // if (proxyRes.ok) cache.put(request, proxyRes);
+  if (cache && res.ok) {
+    cache.put(request, proxyRes.clone());
+  }
   return proxyRes;
 });
