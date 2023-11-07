@@ -49,14 +49,16 @@ dl dt {
   font-style: italic;
 }
 
-svg #labels text:not([aria-current]) {
+svg #labels {
   display: none;
 }
-
-#legend p {
-  font-style: italic;
+svg #doors,
+svg #labels,
+svg #tables {
+  pointer-events: none;
 }
-#legend ul {
+
+#legend {
   display: flex;
   gap: 1em;
   margin: 0;

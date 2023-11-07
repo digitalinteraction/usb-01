@@ -15,10 +15,20 @@
       <center-layout class="flow">
         <p>Take a look at the Open Lab floor in the Urban Sciences Building!</p>
 
+        <label class="field">
+          <span class="field-label">Metric</span>
+          <select id="metric">
+            <option value="room-temperature">Temperature</option>
+            <option value="occupancy-sensor">Occupancy</option>
+            <option value="co2">CO2</option>
+          </select>
+        </label>
+
         <div id="canvas"></div>
 
-        <div id="legend">
+        <div>
           <p>Legend</p>
+          <ul id="legend"></ul>
         </div>
       </center-layout>
     </main>
