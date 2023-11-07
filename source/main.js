@@ -40,7 +40,7 @@ const metric = document.getElementById("metric");
 
 let isFetching = false;
 
-const noValueColour = "transparent";
+const noValueColour = "white";
 
 /** @type {keyof typeof gradients} */
 let currentMetric = "room-temperature";
@@ -81,6 +81,13 @@ const gradients = {
       { offset: 1_000, color: "#FF0000" },
     ],
     [0, 500, 1000, 1500, 2000, 5000],
+  ),
+  "room-brightness": createGradient(
+    [
+      { offset: 0, color: "#000000" },
+      { offset: 500, color: "#FFFFFF" },
+    ],
+    [0, 100, 200, 300, 400, 500],
   ),
 };
 
@@ -151,6 +158,15 @@ async function main() {
     }
   }
 
+  const url = new URL(location.href);
+  if (
+    url.searchParams.has("metric") &&
+    gradients[url.searchParams.get("metric")]
+  ) {
+    metric.value = url.searchParams.get("metric");
+    currentMetric = url.searchParams.get("metric");
+  }
+
   drawLegend();
 
   metric.addEventListener("input", async () => {
@@ -158,6 +174,9 @@ async function main() {
     drawLegend();
     await fetchData();
     // TODO: should fetches be in a Q?
+    const url = new URL(location.href);
+    url.searchParams.set("metric", metric.value);
+    history.pushState(null, null, url);
   });
 
   svg.addEventListener("click", (e) => {
@@ -248,15 +267,13 @@ async function onFeedData(entityId, data) {
   if (elem && room) {
     console.log(elem.id, latest);
 
-    if (latest) {
+    if (typeof latest === "number") {
       elem.setAttribute(
         "fill",
         ColorInterpolator.toColorString(colors.interpolateColor(latest)),
       );
-      elem.setAttribute("title", latest);
     } else {
       elem.setAttribute("fill", noValueColour);
-      elem.setAttribute("title", "No value");
     }
   }
 
