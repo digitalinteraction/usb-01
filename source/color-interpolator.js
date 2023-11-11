@@ -31,19 +31,19 @@ export class ColorInterpolator {
       Math.min(
         (value - before.offset) /
           (after.offset - before.offset > 0 ? after.offset - before.offset : 1),
-        1,
+        1
       ),
-      0,
+      0
     );
     return {
       r: Math.round(
-        (afterColor.r - beforeColor.r) * proportion + beforeColor.r,
+        (afterColor.r - beforeColor.r) * proportion + beforeColor.r
       ),
       g: Math.round(
-        (afterColor.g - beforeColor.g) * proportion + beforeColor.g,
+        (afterColor.g - beforeColor.g) * proportion + beforeColor.g
       ),
       b: Math.round(
-        (afterColor.b - beforeColor.b) * proportion + beforeColor.b,
+        (afterColor.b - beforeColor.b) * proportion + beforeColor.b
       ),
     };
   }
@@ -108,7 +108,7 @@ export class ColorInterpolator {
     };
     for (let i = 0; i < numSteps; i++) {
       const color = this.interpolateColor(
-        lookup.min + ((lookup.max - lookup.min) * i) / (numSteps - 1),
+        lookup.min + ((lookup.max - lookup.min) * i) / (numSteps - 1)
       );
       const numericColor = ColorInterpolator.toNumeric(color);
       lookup.colors.push(numericColor);

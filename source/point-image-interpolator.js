@@ -1,3 +1,9 @@
+// Dan Jackson, 2023
+
+// TODO: Add option for custom outer geometry
+// TODO: Recreate (and fix) possible caching bug with null data points?
+// TODO: Use single value (rather than texture coords), and do not use vertex colour.
+
 import Voronoi from "./voronoi.js";
 
 // Class to interpolate point values to an image from inverse square proportional contributions
@@ -8,9 +14,12 @@ export class PointImageInterpolator {
         mode: "voronoi",
         useDataUri: false,
         useVertexColor: false,
+        subdivide: 1,
+        webgl: ["webgl2", "webgl"],
       },
-      options,
+      options
     );
+    if (typeof options.webgl == "string") options.webgl = [options.webgl];
     this.element = element;
     this.canvas = null;
 
@@ -193,12 +202,12 @@ export class PointImageInterpolator {
         const halfedge0 = Voronoi.prototype.createHalfedge(
           halfedge.edge.newEdge0,
           halfedge.lSite,
-          halfedge.rSite,
+          halfedge.rSite
         );
         const halfedge1 = Voronoi.prototype.createHalfedge(
           halfedge.edge.newEdge1,
           halfedge.lSite,
-          halfedge.rSite,
+          halfedge.rSite
         );
         newHalfedges.push(halfedge0);
         newHalfedges.push(halfedge1);
@@ -266,11 +275,11 @@ export class PointImageInterpolator {
       Math.max(
         Math.floor(
           ((value - colorLookup.min) / (colorLookup.max - colorLookup.min)) *
-            (colorLookup.colors.length - 1),
+            (colorLookup.colors.length - 1)
         ),
-        0,
+        0
       ),
-      colorLookup.colors.length - 1,
+      colorLookup.colors.length - 1
     );
     const color = colorLookup.colors[index];
     return color;
@@ -342,7 +351,9 @@ export class PointImageInterpolator {
       this.boundingBox.xr = 1; // this.width;
       this.boundingBox.yb = 1; // this.height;
       this.diagram = this.voronoi.compute(this.points, this.boundingBox);
-      this.subdivideVoronoiDiagram(this.diagram);
+      for (let i = 0; i < this.options.subdivide; i++) {
+        this.subdivideVoronoiDiagram(this.diagram);
+      }
       this.extendVoronoiDiagram(this.diagram);
       console.dir(this.diagram);
     }
@@ -350,61 +361,118 @@ export class PointImageInterpolator {
     // Update the image data
     if (this.gl == null) {
       // GL context
-      this.gl = this.canvas.getContext("webgl2");
-      if (!this.gl) throw "WebGL2 not supported";
+      for (const glVersion of this.options.webgl) {
+        this.gl = this.canvas.getContext(glVersion);
+        if (this.gl) {
+          this.glVersion = glVersion;
+          break;
+        }
+        console.log("WARNING: Not supported: " + glVersion);
+      }
 
-      // TODO: Calculate greyscale values for points (normalized 0-1 from min/max) and use look-up for color
+      if (this.glVersion == "webgl2") {
+        this.glShaderVersion = "300 es";
+      } else if (this.glVersion == "webgl") {
+        this.glShaderVersion = "100";
+      } else {
+        throw "WebGL not supported";
+      }
+
+      console.log(
+        "GL: " +
+          this.glVersion +
+          " / " +
+          this.glShaderVersion +
+          " -- " +
+          this.gl.getParameter(this.gl.VERSION) +
+          " -- " +
+          this.gl.getParameter(this.gl.SHADING_LANGUAGE_VERSION)
+      );
 
       // Vertex shader
       const vertexShader = this.gl.createShader(this.gl.VERTEX_SHADER);
-      this.gl.shaderSource(
-        vertexShader,
-        `
-        #version 300 es
+      let vertexShaderSource;
 
-        in vec4 vertexPosition;
-        in vec4 color;
-        out vec4 vColor;
-        in vec2 textureCoord;
-        out vec2 vTextureCoord;
+      vertexShaderSource = `
+        #version $version // "100" / "300 es"
+
+        #if __VERSION__ == 100
+          attribute vec4 vertexPosition;
+          attribute vec4 color;
+          varying vec4 vColor;
+          attribute vec2 textureCoord;
+          varying vec2 vTextureCoord;
+        #else // __VERSION__ == 300
+          in vec4 vertexPosition;
+          in vec4 color;
+          out vec4 vColor;
+          in vec2 textureCoord;
+          out vec2 vTextureCoord;
+        #endif
 
         void main() {
           gl_Position = vertexPosition;
           vColor = color;
           vTextureCoord = textureCoord;
         }
-      `.trim(),
+      `;
+      vertexShaderSource = vertexShaderSource.replaceAll(
+        "$version",
+        this.glShaderVersion
       );
+
+      this.gl.shaderSource(vertexShader, vertexShaderSource.trim());
       this.gl.compileShader(vertexShader);
       if (!this.gl.getShaderParameter(vertexShader, this.gl.COMPILE_STATUS)) {
         throw this.gl.getShaderInfoLog(vertexShader);
       }
 
       // Fragment shader
-      const fragmentShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
-      this.gl.shaderSource(
-        fragmentShader,
-        `
-        #version 300 es
-        precision highp float;
+      let fragmentShaderSource = `
+        #version $version // "100" / "300 es"
         
-        in vec4 vColor;
-        out vec4 fragColor;
-        in vec2 vTextureCoord;
+        precision highp float;
+
+        #if __VERSION__ == 100
+          //uniform sampler2D
+          varying vec4 vColor;
+          //out vec4 gl_FragColor;
+          varying vec2 vTextureCoord;
+        #else // __VERSION__ == 300
+          in vec4 vColor;
+          out vec4 fragColor;
+          in vec2 vTextureCoord;
+        #endif
 
         uniform sampler2D uSampler;
 
         void main() {
           if ($useVertexColor) {
-            fragColor = vColor;
+            #if __VERSION__ == 100
+              gl_FragColor = vColor;
+            #else
+              fragColor = vColor;
+            #endif
           } else {
-            fragColor = texture(uSampler, vTextureCoord);
+            #if __VERSION__ == 100
+              gl_FragColor = texture2D(uSampler, vTextureCoord);
+            #else // __VERSION__ == 300
+              fragColor = texture(uSampler, vTextureCoord);
+            #endif
           }
         }
-      `
-          .replaceAll("$useVertexColor", this.options.useVertexColor)
-          .trim(),
+      `;
+      fragmentShaderSource = fragmentShaderSource.replaceAll(
+        "$version",
+        this.glShaderVersion
       );
+      fragmentShaderSource = fragmentShaderSource.replaceAll(
+        "$useVertexColor",
+        this.options.useVertexColor
+      );
+
+      const fragmentShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
+      this.gl.shaderSource(fragmentShader, fragmentShaderSource.trim());
       this.gl.compileShader(fragmentShader);
       if (!this.gl.getShaderParameter(fragmentShader, this.gl.COMPILE_STATUS)) {
         throw this.gl.getShaderInfoLog(fragmentShader);
@@ -423,12 +491,12 @@ export class PointImageInterpolator {
       // Attributes
       this.vertexPosition = this.gl.getAttribLocation(
         program,
-        "vertexPosition",
+        "vertexPosition"
       );
       this.vertexColor = this.gl.getAttribLocation(program, "color");
       this.vertexTextureCoord = this.gl.getAttribLocation(
         program,
-        "textureCoord",
+        "textureCoord"
       );
 
       // Uniforms
@@ -469,7 +537,7 @@ export class PointImageInterpolator {
         0,
         this.gl.RGBA,
         this.gl.UNSIGNED_BYTE,
-        pixels,
+        pixels
       );
       this.gl.activeTexture(this.gl.TEXTURE0);
       this.gl.uniform1i(this.uSampler, 0);
@@ -478,22 +546,22 @@ export class PointImageInterpolator {
       this.gl.texParameteri(
         this.gl.TEXTURE_2D,
         this.gl.TEXTURE_MIN_FILTER,
-        this.gl.NEAREST,
+        this.gl.NEAREST
       );
       this.gl.texParameteri(
         this.gl.TEXTURE_2D,
         this.gl.TEXTURE_MAG_FILTER,
-        this.gl.NEAREST,
+        this.gl.NEAREST
       );
       this.gl.texParameteri(
         this.gl.TEXTURE_2D,
         this.gl.TEXTURE_WRAP_S,
-        this.gl.CLAMP_TO_EDGE,
+        this.gl.CLAMP_TO_EDGE
       );
       this.gl.texParameteri(
         this.gl.TEXTURE_2D,
         this.gl.TEXTURE_WRAP_T,
-        this.gl.CLAMP_TO_EDGE,
+        this.gl.CLAMP_TO_EDGE
       );
     }
 
@@ -538,7 +606,7 @@ export class PointImageInterpolator {
         this.gl.FLOAT,
         false,
         0,
-        0,
+        0
       );
 
       this.colorData = new Float32Array(colors.flat());
@@ -546,7 +614,7 @@ export class PointImageInterpolator {
       this.gl.bufferData(
         this.gl.ARRAY_BUFFER,
         this.colorData,
-        this.gl.STATIC_DRAW,
+        this.gl.STATIC_DRAW
       );
       this.gl.enableVertexAttribArray(this.vertexColor);
       this.gl.vertexAttribPointer(
@@ -555,7 +623,7 @@ export class PointImageInterpolator {
         this.gl.FLOAT,
         false,
         0,
-        0,
+        0
       );
 
       this.textureCoordData = new Float32Array(textureCoordinates.flat());
@@ -563,7 +631,7 @@ export class PointImageInterpolator {
       this.gl.bufferData(
         this.gl.ARRAY_BUFFER,
         this.textureCoordData,
-        this.gl.STATIC_DRAW,
+        this.gl.STATIC_DRAW
       );
       this.gl.enableVertexAttribArray(this.vertexTextureCoord);
       this.gl.vertexAttribPointer(
@@ -572,7 +640,7 @@ export class PointImageInterpolator {
         this.gl.FLOAT,
         false,
         0,
-        0,
+        0
       );
     }
 
@@ -625,12 +693,15 @@ export class PointImageInterpolator {
       }
     }
 
+    // Clear
+    this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+
     // Update color data
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.colorBuffer);
     this.gl.bufferData(
       this.gl.ARRAY_BUFFER,
       this.colorData,
-      this.gl.STATIC_DRAW,
+      this.gl.STATIC_DRAW
     );
 
     // Update texture data
@@ -638,7 +709,7 @@ export class PointImageInterpolator {
     this.gl.bufferData(
       this.gl.ARRAY_BUFFER,
       this.textureCoordData,
-      this.gl.STATIC_DRAW,
+      this.gl.STATIC_DRAW
     );
 
     // Redraw using new values
