@@ -22,6 +22,14 @@ import { PointImageInterpolator } from "./point-image-interpolator.js";
   @property {(typeof floor)['spaces'][number]['zones'][number]} zone
 */
 
+const interpolationOptions = {
+  mode: "voronoi",
+  useDataUri: !false,
+  useVertexColor: false,
+  subdivide: 1,
+  webgl: ["webgl2", "webgl"],
+};
+
 /** @type {SVGScriptElement} */
 let svg = null;
 
@@ -62,14 +70,14 @@ const gradients = {
       { offset: 24, color: "#fd3814" },
       { offset: 42.5, color: "#770600" },
     ],
-    [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+    [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
   ),
   "occupancy-sensor": createGradient(
     [
       { offset: 0, color: "#0c087a" },
       { offset: 1, color: "#74e7ee" },
     ],
-    [0, 1],
+    [0, 1]
   ),
 
   // https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms
@@ -80,14 +88,14 @@ const gradients = {
       { offset: 800, color: "#0000FF" },
       { offset: 1_000, color: "#FF0000" },
     ],
-    [0, 200, 400, 600, 800, 1000],
+    [0, 200, 400, 600, 800, 1000]
   ),
   "room-brightness": createGradient(
     [
       { offset: 0, color: "#000000" },
       { offset: 500, color: "#FFFFFF" },
     ],
-    [0, 100, 200, 300, 400, 500],
+    [0, 100, 200, 300, 400, 500]
   ),
 };
 
@@ -136,9 +144,9 @@ async function main() {
 
     const points = PointImageInterpolator.extractGroupSiblingPoints(
       elem,
-      "circle",
+      "circle"
     );
-    const interpolator = new PointImageInterpolator(elem);
+    const interpolator = new PointImageInterpolator(elem, interpolationOptions);
 
     const record = {
       interpolator,
@@ -205,14 +213,14 @@ function drawLegend() {
     colour.classList.add("legendColour");
     colour.style.setProperty(
       "--colour",
-      ColorInterpolator.toColorString(colors.interpolateColor(i)),
+      ColorInterpolator.toColorString(colors.interpolateColor(i))
     );
   }
 }
 
 async function fetchEntity(entityId) {
   const res = await fetch(
-    new URL(`./sensors/entity/${entityId}`, UO_BASE),
+    new URL(`./sensors/entity/${entityId}`, UO_BASE)
   ).catch(() => null);
 
   if (!res?.ok) {
@@ -225,7 +233,7 @@ async function fetchEntity(entityId) {
 
 async function fetchFeed(feedId) {
   const res = await fetch(new URL(`./sensors/feed/${feedId}`, UO_BASE)).catch(
-    () => null,
+    () => null
   );
 
   if (!res?.ok) {
@@ -270,7 +278,7 @@ async function onFeedData(entityId, data) {
     if (typeof latest === "number") {
       elem.setAttribute(
         "fill",
-        ColorInterpolator.toColorString(colors.interpolateColor(latest)),
+        ColorInterpolator.toColorString(colors.interpolateColor(latest))
       );
     } else {
       elem.setAttribute("fill", noValueColour);
