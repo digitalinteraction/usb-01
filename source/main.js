@@ -35,7 +35,7 @@ const unitShorthands = new Map([
   ["degrees celsius", "°C"],
   ["percent relative humidity", "%rh"],
   ["luxes", " lux"],
-  ["parts per million", "ppm"],
+  ["parts per million", " ppm"],
   ["unknown", ""],
 ]);
 
