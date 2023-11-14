@@ -330,9 +330,9 @@ async function onRoomClick(room) {
     } else if (value) {
       const date = new Date(time ?? "invalid date");
       const title = Number.isNaN(date.getTime()) ? "" : fmt.format(date);
-      const u = unitShorthands.get(unit) ?? unit ?? "";
+      const u = unit ? unitShorthands.get(unit) ?? ` ${unit}` : "";
       rows.push(`<dt>${feed.metric}</dt>`);
-      rows.push(`<dd title="${title}">${value} ${u}</dd>`);
+      rows.push(`<dd title="${title}">${value}${u}</dd>`);
     } else {
       // rows.push(`<dd>no value</dd>`);
     }
