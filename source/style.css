@@ -29,7 +29,7 @@ svg {
 }
 
 /* Description list */
-@media (max-width: 420px) {
+@media (max-width: 419px) {
   dl dd {
     margin-inline-start: 2ch;
   }
@@ -37,14 +37,14 @@ svg {
     margin-top: var(--s-1);
   }
 }
-@media (min-width: 419px) {
-  dl {
+@media (min-width: 420px) {
+  dl.tableList {
     display: grid;
     grid-template-columns: max-content 1fr;
     gap: 0.5ch 1ch;
   }
 }
-dl dt {
+dl.tableList dt {
   font-weight: 600;
   font-style: italic;
 }

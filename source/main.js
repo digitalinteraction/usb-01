@@ -298,35 +298,50 @@ async function onFeedData(entityId, data) {
   }
 }
 
+const unitShorthands = new Map([
+  ["percent", "%"],
+  ["degrees celsius", "°C"],
+  ["percent relative humidity", "%rh"],
+  ["luxes", "lux"],
+  ["unknown", ""],
+]);
+
 /** @param {(typeof floor)['rooms'][number]} room */
 async function onRoomClick(room) {
   const entity = await fetchEntity(room.entityId);
   if (!entity) return;
+
+  const fmt = new Intl.DateTimeFormat(undefined, {
+    dateStyle: "short",
+    timeStyle: "short",
+  });
 
   const label = document.querySelector(room.labelSelector);
 
   const rows = [];
   for (const feedId of Object.values(room.feeds)) {
     const feed = entity.feed.find((f) => f.feedId === feedId);
-    const value = feed.timeseries[0]?.latest?.value;
+    const { value, time } = feed.timeseries[0]?.latest ?? {};
     const unit = feed.timeseries[0]?.unit?.name;
 
     if (/occupancy/i.test(feed.metric)) {
       rows.push(`<dt>${feed.metric}</dt>`);
       rows.push(`<dd>${value ? "Yes" : "No"}</dd>`);
     } else if (value) {
+      const date = new Date(time ?? "invalid date");
+      const title = Number.isNaN(date.getTime()) ? "" : fmt.format(date);
+      const u = unitShorthands.get(unit) ?? unit ?? "";
       rows.push(`<dt>${feed.metric}</dt>`);
-      rows.push(`<dd>${value} ${unit ?? ""}</dd>`);
+      rows.push(`<dd title="${title}">${value} ${u}</dd>`);
     } else {
       // rows.push(`<dd>no value</dd>`);
     }
   }
 
-  // popup.open = true;
   popup.showModal();
   popup.innerHTML = `
     <h2>${label?.textContent ?? entity.name ?? "Room"}</h2>
-    <dl>${rows.join("\n")}</dl>
+    <dl class="tableList">${rows.join("\n")}</dl>
     <cluster-layout class="toolbar">
       <form method="dialog">
         <button>Close</button>
