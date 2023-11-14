@@ -312,7 +312,7 @@ async function onRoomClick(room) {
   const entity = await fetchEntity(room.entityId);
   if (!entity) return;
 
-  const fmt = new Intl.DateTimeFormat(undefined, {
+  const fmt = new Intl.DateTimeFormat(navigator.language, {
     dateStyle: "short",
     timeStyle: "short",
   });
