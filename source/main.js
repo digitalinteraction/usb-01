@@ -30,6 +30,15 @@ const interpolationOptions = {
   webgl: ["webgl2", "webgl"],
 };
 
+const unitShorthands = new Map([
+  ["percent", "%"],
+  ["degrees celsius", "°C"],
+  ["percent relative humidity", "%rh"],
+  ["luxes", " lux"],
+  ["parts per million", "ppm"],
+  ["unknown", ""],
+]);
+
 /** @type {SVGScriptElement} */
 let svg = null;
 
@@ -297,14 +306,6 @@ async function onFeedData(entityId, data) {
     }
   }
 }
-
-const unitShorthands = new Map([
-  ["percent", "%"],
-  ["degrees celsius", "°C"],
-  ["percent relative humidity", "%rh"],
-  ["luxes", "lux"],
-  ["unknown", ""],
-]);
 
 /** @param {(typeof floor)['rooms'][number]} room */
 async function onRoomClick(room) {
