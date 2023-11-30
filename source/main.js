@@ -259,14 +259,20 @@ async function fetchData() {
   isFetching = true;
 
   for (const room of floor.rooms) {
-    if (!room.feeds[currentMetric]) continue;
+    if (!room.feeds[currentMetric]) {
+      onFeedData(room.entityId, null);
+      continue;
+    }
     const data = await fetchFeed(room.feeds[currentMetric]);
     if (data) onFeedData(room.entityId, data);
   }
 
   for (const space of floor.spaces) {
     for (const zone of space.zones) {
-      if (!zone.feeds[currentMetric]) continue;
+      if (!zone.feeds[currentMetric]) {
+        onFeedData(zone.entityId, null);
+        continue;
+      }
       const data = await fetchFeed(zone.feeds[currentMetric]);
       if (data) onFeedData(zone.entityId, data);
     }
@@ -278,12 +284,12 @@ async function onFeedData(entityId, data) {
   let elem = rooms.get(entityId);
   const room = floor.rooms.find((r) => r.entityId === entityId);
   const zone = zones.get(entityId);
-  const latest = data.timeseries?.[0]?.latest?.value;
+  const latest = data?.timeseries?.[0]?.latest?.value;
 
   const { colors, lookup } = gradients[currentMetric];
 
   if (elem && room) {
-    console.debug(elem.id, latest);
+    console.debug("onFeedData room", elem.id, latest);
 
     if (typeof latest === "number") {
       elem.setAttribute(
@@ -296,7 +302,7 @@ async function onFeedData(entityId, data) {
   }
 
   if (zone) {
-    console.debug(zone.zone.selector, latest);
+    console.debug("onFeedData zone", zone.zone.selector, latest);
 
     if (typeof latest === "number") {
       zone.point.value = latest;
