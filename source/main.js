@@ -215,6 +215,7 @@ async function main() {
   metric.addEventListener("input", async () => {
     currentMetric = metric.value;
     drawLegend();
+    clearData();
     await fetchData();
     // TODO: should fetches be in a Q?
     const url = new URL(location.href);
@@ -222,6 +223,7 @@ async function main() {
     history.pushState(null, null, url);
   });
 
+  clearData();
   await fetchData();
   setInterval(() => fetchData(), 60_000);
 }
@@ -293,6 +295,17 @@ async function fetchFeed(feedId) {
   return res.json();
 }
 
+function clearData() {
+  for (const room of floor.rooms) {
+    onFeedData(room.entityId, null);
+  }
+  for (const space of floor.spaces) {
+    for (const zone of space.zones) {
+      onFeedData(zone.entityId, null);
+    }
+  }
+}
+
 async function fetchData() {
   if (isFetching) return;
   isFetching = true;
@@ -303,7 +316,7 @@ async function fetchData() {
       continue;
     }
     const data = await fetchFeed(room.feeds[currentMetric]);
-    if (data) onFeedData(room.entityId, data);
+    onFeedData(room.entityId, data);
   }
 
   for (const space of floor.spaces) {
@@ -313,7 +326,7 @@ async function fetchData() {
         continue;
       }
       const data = await fetchFeed(zone.feeds[currentMetric]);
-      if (data) onFeedData(zone.entityId, data);
+      onFeedData(zone.entityId, data);
     }
   }
   isFetching = false;
