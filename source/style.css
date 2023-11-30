@@ -49,9 +49,6 @@ dl.tableList dt {
   font-style: italic;
 }
 
-svg #labels {
-  display: none;
-}
 svg #doors,
 svg #labels,
 svg #tables {
