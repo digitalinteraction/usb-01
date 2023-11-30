@@ -1,0 +1,11 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "path" : "hack\/proxy.js"
+    }
+  },
+  "arguments" : [
+    "--cache"
+  ]
+}

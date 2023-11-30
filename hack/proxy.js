@@ -4,6 +4,11 @@
 // A little Deno proxy to re-host the UO API and inject CORS headers
 //
 
+if (Deno.args.includes("--help")) {
+  console.log("Usage: ./proxy.js [--cache]");
+  Deno.exit();
+}
+
 const BASE_URL = "https://api.usb.urbanobservatory.ac.uk/";
 
 const cache = Deno.args.includes("--cache") ? await caches.open("v1") : null;
