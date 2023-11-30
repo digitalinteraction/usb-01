@@ -125,6 +125,14 @@ function createGradient(stops, legend, numSteps = 1024) {
   return { colors, lookup, legend };
 }
 
+function lookupZone(id) {
+  for (const space of floor.spaces) {
+    const found = space.zones.find((z) => z.selector === `#${id}`);
+    if (found) return found;
+  }
+  return null;
+}
+
 async function main() {
   svg = new DOMParser()
     .parseFromString(await fetch(svgURL).then((r) => r.text()), "image/svg+xml")
@@ -140,7 +148,9 @@ async function main() {
       continue;
     }
     rooms.set(room.entityId, elem);
-    elem.addEventListener("click", (e) => onRoomClick(room, e));
+    elem.addEventListener("click", () =>
+      showEntity(room.entityId, room.feeds, room.labelSelector),
+    );
   }
 
   // spaces
@@ -168,12 +178,27 @@ async function main() {
 
     for (const zone of space.zones) {
       for (const point of points) {
-        // not great...
+        point.element.style.pointerEvents = "none";
+        // TODO: not a great comparison...
         if ("#" + point.element.id === zone.selector) {
           zones.set(zone.entityId, { ...record, point, zone });
         }
       }
     }
+
+    elem.addEventListener("click", (e) => {
+      const zone = findNearestNode(
+        e.clientX,
+        e.clientY,
+        points.map((p) => p.element),
+        50,
+      );
+
+      if (zone) {
+        const record = lookupZone(zone.id);
+        if (record) showEntity(record.entityId, record.feeds);
+      }
+    });
   }
 
   const url = new URL(location.href);
@@ -197,15 +222,29 @@ async function main() {
     history.pushState(null, null, url);
   });
 
-  svg.addEventListener("click", (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    console.log(x, y, e.target.id);
-  });
-
   await fetchData();
   setInterval(() => fetchData(), 60_000);
+}
+
+/**
+  @param {number} x
+  @param {number} y
+  @param {Element[]} nodes
+ */
+function findNearestNode(targetX, targetY, nodes, threshold = Infinity) {
+  let nearest = null;
+  let nearestSq = threshold ** 2;
+  for (const node of nodes) {
+    const rect = node.getBoundingClientRect();
+    const nodeX = rect.x + rect.width * 0.5;
+    const nodeY = rect.y + rect.height * 0.5;
+    const distSq = Math.pow(targetX - nodeX, 2) + Math.pow(targetY - nodeY, 2);
+    if (distSq < nearestSq) {
+      nearestSq = distSq;
+      nearest = node;
+    }
+  }
+  return nearest;
 }
 
 function drawLegend() {
@@ -314,9 +353,12 @@ async function onFeedData(entityId, data) {
   }
 }
 
-/** @param {(typeof floor)['rooms'][number]} room */
-async function onRoomClick(room) {
-  const entity = await fetchEntity(room.entityId);
+/** 
+  @param {string} entityId
+  @param {Record<string, string>} feeds
+*/
+async function showEntity(entityId, feeds, labelSelector = null) {
+  const entity = await fetchEntity(entityId);
   if (!entity) return;
 
   const fmt = new Intl.DateTimeFormat(navigator.language, {
@@ -324,32 +366,48 @@ async function onRoomClick(room) {
     timeStyle: "short",
   });
 
-  const label = document.querySelector(room.labelSelector);
+  const label = labelSelector ? document.querySelector(labelSelector) : null;
 
-  const rows = [];
-  for (const feedId of Object.values(room.feeds)) {
+  const attributes = [];
+
+  // const rows = [];
+  for (const feedId of Object.values(feeds)) {
     const feed = entity.feed.find((f) => f.feedId === feedId);
     const { value, time } = feed.timeseries[0]?.latest ?? {};
     const unit = feed.timeseries[0]?.unit?.name;
 
     if (/occupancy/i.test(feed.metric)) {
-      rows.push(`<dt>${feed.metric}</dt>`);
-      rows.push(`<dd>${value ? "Yes" : "No"}</dd>`);
+      attributes.push({ key: feed.metric, value: value ? "Yes" : "No" });
     } else if (value) {
       const date = new Date(time ?? "invalid date");
-      const title = Number.isNaN(date.getTime()) ? "" : fmt.format(date);
       const u = unit ? unitShorthands.get(unit) ?? ` ${unit}` : "";
-      rows.push(`<dt>${feed.metric}</dt>`);
-      rows.push(`<dd title="${title}">${value}${u}</dd>`);
+
+      attributes.push({
+        key: feed.metric,
+        value: `${value}${u}`,
+        title: Number.isNaN(date.getTime()) ? "" : fmt.format(date),
+      });
     } else {
       // rows.push(`<dd>no value</dd>`);
     }
   }
 
+  const title = (label?.textContent ?? entity.name ?? "Room").replace(
+    /Urban Sciences Building: Floor 1: /i,
+    "",
+  );
+
+  const dataItems = attributes
+    .sort((a, b) => a.key.localeCompare(b.key))
+    .map(
+      (row) => `<dt>${row.key}</dt><dd title="${row.title}">${row.value}</dd>`,
+    )
+    .join("\n");
+
   popup.showModal();
   popup.innerHTML = `
-    <h2>${label?.textContent ?? entity.name ?? "Room"}</h2>
-    <dl class="tableList">${rows.join("\n")}</dl>
+    <h2>${title}</h2>
+    <dl class="tableList">${dataItems}</dl>
     <cluster-layout class="toolbar">
       <form method="dialog">
         <button>Close</button>
