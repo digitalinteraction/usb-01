@@ -355,7 +355,6 @@ export class PointImageInterpolator {
         this.subdivideVoronoiDiagram(this.diagram);
       }
       this.extendVoronoiDiagram(this.diagram);
-      console.dir(this.diagram);
     }
 
     // Update the image data
