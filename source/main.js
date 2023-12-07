@@ -56,6 +56,7 @@ const popup = document.getElementById("popup");
 const metric = document.getElementById("metric");
 
 let isFetching = false;
+let latestTimestamp = null;
 
 const noValueColour = "white";
 
@@ -80,6 +81,7 @@ const gradients = {
       { offset: 42.5, color: "#770600" },
     ],
     [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+    "℃",
   ),
   "occupancy-sensor": createGradient(
     [
@@ -98,6 +100,7 @@ const gradients = {
       { offset: 1_000, color: "#FF0000" },
     ],
     [0, 200, 400, 600, 800, 1000],
+    "ppm",
   ),
   "room-brightness": createGradient(
     [
@@ -105,6 +108,7 @@ const gradients = {
       { offset: 500, color: "#FFFFFF" },
     ],
     [0, 100, 200, 300, 400, 500],
+    "lux",
   ),
 };
 
@@ -119,10 +123,10 @@ function debounce(ms, fn) {
   };
 }
 
-function createGradient(stops, legend, numSteps = 1024) {
+function createGradient(stops, legend, units = null) {
   const colors = new ColorInterpolator(stops);
-  const lookup = colors.createLookup(numSteps);
-  return { colors, lookup, legend };
+  const lookup = colors.createLookup(1024);
+  return { colors, lookup, legend, units };
 }
 
 function lookupZone(id) {
@@ -250,11 +254,18 @@ function findNearestNode(targetX, targetY, nodes, threshold = Infinity) {
 }
 
 function drawLegend() {
-  const ul = document.getElementById("legend");
+  const wrapper = document.getElementById("legend");
+
+  const p = wrapper.querySelector("p");
+  const ul = wrapper.querySelector("ul");
+
+  p.textContent = "Legend";
   ul.innerHTML = "";
   ul.setAttribute("role", "list");
 
-  const { colors, legend } = gradients[currentMetric];
+  const { colors, legend, units } = gradients[currentMetric];
+
+  if (units) p.textContent += " / " + units;
 
   for (const i of legend) {
     const li = ul.appendChild(document.createElement("li"));
@@ -266,6 +277,21 @@ function drawLegend() {
       "--colour",
       ColorInterpolator.toColorString(colors.interpolateColor(i)),
     );
+  }
+}
+
+/** @param {Date | null} value */
+function drawTimestamp(value) {
+  const label = document.getElementById("timestamp");
+
+  if (value instanceof Date) {
+    const fmt = new Intl.DateTimeFormat(navigator.language, {
+      dateStyle: "short",
+      timeStyle: "short",
+    });
+    label.textContent = `Latest data: ${fmt.format(value)}`;
+  } else {
+    label.textContent = "Latest data: unknown";
   }
 }
 
@@ -309,6 +335,7 @@ function clearData() {
 async function fetchData() {
   if (isFetching) return;
   isFetching = true;
+  latestTimestamp = null;
 
   for (const room of floor.rooms) {
     if (!room.feeds[currentMetric]) {
@@ -329,24 +356,25 @@ async function fetchData() {
       onFeedData(zone.entityId, data);
     }
   }
+
   isFetching = false;
 }
 
-async function onFeedData(entityId, data) {
+function onFeedData(entityId, data) {
   let elem = rooms.get(entityId);
   const room = floor.rooms.find((r) => r.entityId === entityId);
   const zone = zones.get(entityId);
-  const latest = data?.timeseries?.[0]?.latest?.value;
+  const latest = data?.timeseries?.[0]?.latest;
 
   const { colors, lookup } = gradients[currentMetric];
 
   if (elem && room) {
     console.debug("onFeedData room", elem.id, latest);
 
-    if (typeof latest === "number") {
+    if (typeof latest?.value === "number") {
       elem.setAttribute(
         "fill",
-        ColorInterpolator.toColorString(colors.interpolateColor(latest)),
+        ColorInterpolator.toColorString(colors.interpolateColor(latest.value)),
       );
     } else {
       elem.setAttribute("fill", noValueColour);
@@ -356,13 +384,23 @@ async function onFeedData(entityId, data) {
   if (zone) {
     console.debug("onFeedData zone", zone.zone.selector, latest);
 
-    if (typeof latest === "number") {
-      zone.point.value = latest;
+    if (typeof latest?.value === "number") {
+      zone.point.value = latest.value;
       zone.interpolator.update(zone.points, lookup);
       zone.draw();
     } else {
       zone.point.value = null;
     }
+  }
+
+  if (typeof latest?.time === "string") {
+    const date = new Date(latest.time);
+    if (!Number.isNaN(date.getTime())) {
+      if (!latestTimestamp || date.getTime() > latestTimestamp.getTime()) {
+        latestTimestamp = date;
+      }
+    }
+    drawTimestamp(latestTimestamp);
   }
 }
 

@@ -55,7 +55,7 @@ svg #tables {
   pointer-events: none;
 }
 
-#legend {
+#legend ul {
   display: flex;
   gap: 1em;
   margin: 0;
@@ -74,6 +74,7 @@ svg #tables {
   border-radius: 1em;
   margin-inline-end: 0.25em;
   vertical-align: middle;
+  outline: 1px dashed var(--color);
 }
 #popup::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
