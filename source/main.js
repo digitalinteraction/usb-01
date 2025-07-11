@@ -78,9 +78,9 @@ const gradients = {
       { offset: 20, color: "#FECB01" },
       { offset: 22, color: "#FC7F0A" },
       { offset: 24, color: "#fd3814" },
-      { offset: 42.5, color: "#770600" },
+      { offset: 34.5, color: "#420D17" },
     ],
-    [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+    [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 30],
     "℃",
   ),
   "occupancy-sensor": createGradient(
